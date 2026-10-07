@@ -1,0 +1,29 @@
+name: kontur
+
+services:
+  server:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD in .env (at least 10 characters)}
+      FACE_SERVICE_URL: http://face:8001
+      FACE_THRESHOLD: ${FACE_THRESHOLD:-0.363}
+      DEVICE_API_KEY: ${DEVICE_API_KEY:-}
+    volumes:
+      - access-data:/data
+    depends_on:
+      face:
+        condition: service_healthy
+    restart: unless-stopped
+  face:
+    build: ./face-service
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+volumes:
+  access-data:

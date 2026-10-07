@@ -1,0 +1,7 @@
+{
+  "name": "kontur-browser-checks",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": { "test:browser": "node scripts/browser_test.cjs" },
+  "devDependencies": { "playwright": "1.61.1" }
+}

@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="#152921" name="theme-color"/>
+  <title>
+   Контур — контроль доступа
+  </title>
+  <link href="/styles.css" rel="stylesheet"/>
+  <script defer="" src="/app.js">
+  </script>
+ </head>
+ <body>
+  <svg aria-hidden="true" class="svg-library" xmlns="http://www.w3.org/2000/svg">
+   <defs>
+    <symbol id="i-shield" viewbox="0 0 24 24">
+     <path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6z">
+     </path>
+     <path d="m8 12 3 3 5-6">
+     </path>
+    </symbol>
+    <symbol id="i-grid" viewbox="0 0 24 24">
+     <rect height="7" rx="2" width="7" x="3" y="3">
+     </rect>
+     <rect height="7" rx="2" width="7" x="14" y="3">
+     </rect>
+     <rect height="7" rx="2" width="7" x="3" y="14">
+     </rect>
+     <rect height="7" rx="2" width="7" x="14" y="14">
+     </rect>
+    </symbol>
+    <symbol id="i-users" viewbox="0 0 24 24">
+     <circle cx="9" cy="8" r="3">
+     </circle>
+     <path d="M3 21v-3a6 6 0 0 1 12 0v3M17 5a3 3 0 0 1 0 6m1 4a5 5 0 0 1 3 5">
+     </path>
+    </symbol>
+    <symbol id="i-card" viewbox="0 0 24 24">
+     <rect height="14" rx="3" width="20" x="2" y="5">
+     </rect>
+     <path d="M2 10h20M6 15h4">
+     </path>
+    </symbol>
+    <symbol id="i-plus" viewbox="0 0 24 24">
+     <path d="M12 5v14M5 12h14">
+     </path>
+    </symbol>
+    <symbol id="i-search" viewbox="0 0 24 24">
+     <circle cx="10.5" cy="10.5" r="6.5">
+     </circle>
+     <path d="m16 16 5 5">
+     </path>
+    </symbol>
+    <symbol id="i-arrow" viewbox="0 0 24 24">
+     <path d="M5 12h14m-6-6 6 6-6 6">
+     </path>
+    </symbol>
+    <symbol id="i-check" viewbox="0 0 24 24">
+     <path d="m5 12 4 4L19 6">
+     </path>
+    </symbol>
+    <symbol id="i-close" viewbox="0 0 24 24">
+     <path d="m6 6 12 12M6 18 18 6">
+     </path>
+    </symbol>
+    <symbol id="i-upload" viewbox="0 0 24 24">
+     <path d="M12 16V3m-5 5 5-5 5 5M3 16v5h18v-5">
+     </path>
+    </symbol>
+    <symbol id="i-lock" viewbox="0 0 24 24">
+     <rect height="11" rx="3" width="16" x="4" y="10">
+     </rect>
+     <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3">
+     </path>
+    </symbol>
+    <symbol id="i-clock" viewbox="0 0 24 24">
+     <circle cx="12" cy="12" r="9">
+     </circle>
+     <path d="M12 7v5l3 2">
+     </path>
+    </symbol>
+    <symbol id="i-refresh" viewbox="0 0 24 24">
+     <path d="M20 8a9 9 0 1 0 0 8M20 3v5h-5">
+     </path>
+    </symbol>
+    <symbol id="i-menu" viewbox="0 0 24 24">
+     <path d="M4 6h16M4 12h16M4 18h16">
+     </path>
+    </symbol>
+    <symbol id="i-trash" viewbox="0 0 24 24">
+     <path d="M3 6h18M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7M14 10v7">
+     </path>
+    </symbol>
+   </defs>
+  </svg>
+  <section class="login-view" id="login-view">
+   <div class="login-story">
+    <div class="brand">
+     <div class="brand-icon">
+      <svg>
+       <use href="#i-shield">
+       </use>
+      </svg>
+     </div>
+     <span>
+      контур
+      <span class="brand-sub">
+       КОНТРОЛЬ ДОСТУПА
+      </span>
+     </span>
+    </div>
+    <div class="login-copy">
+     <span class="eyebrow">
+      RFID + FACE ID
+     </span>
+     <h1>
+      Доступ начинается
+      <br/>
+      с доверия.
+     </h1>
+     <p>
+      Одна панель для сотрудников,
+      <br/>
+      карт и событий на проходной.
+     </p>
+     <div aria-hidden="true" class="login-graphic">
+      <svg>
+       <use href="#i-shield">
+       </use>
+      </svg>
+      <span class="orbit orbit-one">
+      </span>
+      <span class="orbit orbit-two">
+      </span>
+     </div>
+    </div>
+    <p class="login-foot">
+     Система контроля и управления доступом
+    </p>
+   </div>
+   <div class="login-panel">
+    <form id="login-form">
+     <div class="small-icon">
+      <svg>
+       <use href="#i-lock">
+       </use>
+      </svg>
+     </div>
+     <span class="eyebrow">
+      ПАНЕЛЬ АДМИНИСТРАТОРА
+     </span>
+     <h2>
+      Добро пожаловать
+     </h2>
+     <p class="muted">
+      Введите пароль для управления системой.
+     </p>
+     <label for="password">
+      Пароль администратора
+     </label>
+     <input autocomplete="current-password" id="password" minlength="10" name="password" placeholder="Введите пароль" required="" type="password"/>
+     <p class="form-error" id="login-error" role="alert">
+     </p>
+     <button class="button primary" type="submit">
+      Войти в систему
+      <svg>
+       <use href="#i-arrow">
+       </use>
+      </svg>
+     </button>
+     <p class="login-hint">
+      Пароль задаётся при запуске сервера.
+      <br/>
+      Если он не указан, сервер выводит его в консоль.
+     </p>
+    </form>
+   </div>
+  </section>
+  <div class="app-view" hidden="" id="app-view">
+   <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#journal">
+     <div class="brand-icon">
+      <svg>
+       <use href="#i-shield">
+       </use>
+      </svg>
+     </div>
+     <span>
+      контур
+      <span class="brand-sub">
+       КОНТРОЛЬ ДОСТУПА
+      </span>
+     </span>
+    </a>
+    <div class="workspace-tag">
+     <span class="dot">
+     </span>
+     Панель управления
+    </div>
+    <p class="nav-label">
+     РАБОЧЕЕ ПРОСТРАНСТВО
+    </p>
+    <nav aria-label="Основная навигация">
+     <a class="nav-link" data-page="journal" href="#journal">
+      <svg>
+       <use href="#i-grid">
+       </use>
+      </svg>
+      Журнал событий
+      <span class="nav-mark">
+      </span>
+     </a>
+     <a class="nav-link" data-page="users" href="#users">
+      <svg>
+       <use href="#i-users">
+       </use>
+      </svg>
+      Сотрудники
+     </a>
+     <a class="nav-link" data-page="terminal" href="#terminal">
+      <svg>
+       <use href="#i-card">
+       </use>
+      </svg>
+      Проверка доступа
+     </a>
+    </nav>
+    <div class="sidebar-bottom">
+     <div class="sidebar-note">
+      <svg>
+       <use href="#i-shield">
+       </use>
+      </svg>
+      <strong>
+       Два фактора доступа
+      </strong>
+      <p>
+       Карта идентифицирует сотрудника.
+       <br/>
+       Лицо подтверждает личность.
+      </p>
+     </div>
+     <div class="profile">
+      <span class="avatar">
+       А
+      </span>
+      <span>
+       <strong>
+        Администратор
+       </strong>
+       <small>
+        Управление системой
+       </small>
+      </span>
+      <button aria-label="Выйти" class="icon-button" id="logout" title="Выйти">
+       <svg>
+        <use href="#i-arrow">
+        </use>
+       </svg>
+      </button>
+     </div>
+    </div>
+   </aside>
+   <div class="main-shell">
+    <header class="topbar">
+     <div class="breadcrumb">
+      <button aria-label="Открыть меню" class="icon-button mobile-only" id="menu-toggle">
+       <svg>
+        <use href="#i-menu">
+        </use>
+       </svg>
+      </button>
+      <span>
+       Рабочее пространство
+      </span>
+      <span class="slash">
+       /
+      </span>
+      <strong id="breadcrumb-page">
+       Журнал событий
+      </strong>
+     </div>
+     <span class="system-pill" id="system-state">
+      <span class="dot">
+      </span>
+      <span>
+       Проверка системы…
+      </span>
+     </span>
+    </header>
+    <main>
+     <section class="page" id="page-journal">
+      <div class="page-heading">
+       <div>
+        <div class="eyebrow">
+         ОБЗОР СИСТЕМЫ
+        </div>
+        <h1>
+         Журнал событий
+         <span class="heading-dot">
+          .
+         </span>
+        </h1>
+        <p class="muted">
+         Все проходы и попытки доступа — в одном месте.
+        </p>
+       </div>
+       <button class="button primary" data-open-user="">
+        <svg>
+         <use href="#i-plus">
+         </use>
+        </svg>
+        Добавить сотрудника
+       </button>
+      </div>
+      <div class="stats-grid">
+       <article class="stat-card">
+        <div class="stat-top">
+         Успешные проходы
+         <span class="stat-icon green">
+          <svg>
+           <use href="#i-arrow">
+           </use>
+          </svg>
+         </span>
+        </div>
+        <strong id="stat-success">
+         0
+        </strong>
+        <span class="stat-caption">
+         <span class="dot">
+         </span>
+         Сегодня, по Москве
+        </span>
+       </article>
+       <article class="stat-card">
+        <div class="stat-top">
+         Отказы в доступе
+         <span class="stat-icon red">
+          <svg>
+           <use href="#i-lock">
+           </use>
+          </svg>
+         </span>
+        </div>
+        <strong id="stat-denied">
+         0
+        </strong>
+        <span class="stat-caption">
+         Требуют внимания администратора
+        </span>
+       </article>
+       <article class="stat-card">
+        <div class="stat-top">
+         Сотрудники
+         <span class="stat-icon blue">
+          <svg>
+           <use href="#i-users">
+           </use>
+          </svg>
+         </span>
+        </div>
+        <strong id="stat-users">
+         0
+        </strong>
+        <span class="stat-caption">
+         <span id="stat-active">
+          0
+         </span>
+         с активным доступом
+        </span>
+       </article>
+      </div>
+      <article class="activity-card">
+       <div>
+        <span class="eyebrow">
+         АКТИВНОСТЬ ЗА ДЕНЬ
+        </span>
+        <h3>
+         Ритм проходной
+        </h3>
+        <p class="muted">
+         <span id="activity-total">
+          0 событий
+         </span>
+         · время МСК
+        </p>
+       </div>
+       <div class="activity-plot">
+        <div aria-label="Число событий по часам" class="activity-bars" id="activity-bars" role="img">
+        </div>
+        <div class="chart-axis">
+         <span>
+          00:00
+         </span>
+         <span>
+          06:00
+         </span>
+         <span>
+          12:00
+         </span>
+         <span>
+          18:00
+         </span>
+         <span>
+          23:00
+         </span>
+        </div>
+       </div>
+       <span class="activity-live">
+        <span class="dot">
+        </span>
+        LIVE
+       </span>
+      </article>
+      <article class="panel">
+       <div class="panel-heading">
+        <div>
+         <h2>
+          Последние события
+          <span class="count" id="event-count">
+           0
+          </span>
+         </h2>
+         <p class="muted small">
+          Автоматическое обновление каждые 5 секунд
+         </p>
+        </div>
+        <button class="button secondary small-button" id="refresh-logs">
+         <svg>
+          <use href="#i-refresh">
+          </use>
+         </svg>
+         Обновить
+        </button>
+       </div>
+       <div class="filters">
+        <div class="search-input">
+         <svg>
+          <use href="#i-search">
+          </use>
+         </svg>
+         <input aria-label="Поиск событий" id="log-search" placeholder="Поиск по ФИО или UID" type="search"/>
+        </div>
+        <select aria-label="Статус события" id="log-status">
+         <option value="">
+          Все статусы
+         </option>
+         <option value="success">
+          Успешные проходы
+         </option>
+         <option value="denied">
+          Все отказы
+         </option>
+         <option value="unknown_uid">
+          Неизвестная карта
+         </option>
+         <option value="face_mismatch">
+          Лицо не совпало
+         </option>
+         <option value="inactive_user">
+          Карта заблокирована
+         </option>
+         <option value="no_face_detected">
+          Лицо не найдено
+         </option>
+        </select>
+        <input aria-label="Дата события" id="log-date" type="date"/>
+        <button class="text-button" id="reset-filters">
+         Сбросить
+        </button>
+       </div>
+       <div class="table-wrap">
+        <table>
+         <thead>
+          <tr>
+           <th>
+            ВРЕМЯ · МСК
+           </th>
+           <th>
+            СОТРУДНИК
+           </th>
+           <th>
+            UID КАРТЫ
+           </th>
+           <th>
+            РЕЗУЛЬТАТ
+           </th>
+          </tr>
+         </thead>
+         <tbody id="logs-body">
+         </tbody>
+        </table>
+       </div>
+       <div class="table-footer">
+        <span id="log-range">
+         Нет событий
+        </span>
+        <div class="pagination">
+         <button class="button secondary small-button" id="previous-page">
+          ← Назад
+         </button>
+         <button class="button secondary small-button" id="next-page">
+          Далее →
+         </button>
+        </div>
+       </div>
+      </article>
+     </section>
+     <section class="page" hidden="" id="page-users">
+      <div class="page-heading">
+       <div>
+        <div class="eyebrow">
+         УПРАВЛЕНИЕ ДОСТУПОМ
+        </div>
+        <h1>
+         Сотрудники
+         <span class="heading-dot">
+          .
+         </span>
+        </h1>
+        <p class="muted">
+         Карты, профили и разрешения на проход.
+        </p>
+       </div>
+       <button class="button primary" data-open-user="">
+        <svg>
+         <use href="#i-plus">
+         </use>
+        </svg>
+        Добавить сотрудника
+       </button>
+      </div>
+      <article class="panel">
+       <div class="panel-heading">
+        <h2>
+         Зарегистрированные сотрудники
+         <span class="count" id="users-count">
+          0
+         </span>
+        </h2>
+        <div class="search-input">
+         <svg>
+          <use href="#i-search">
+          </use>
+         </svg>
+         <input aria-label="Поиск сотрудников" id="user-search" placeholder="Поиск сотрудника" type="search"/>
+        </div>
+       </div>
+       <div class="table-wrap">
+        <table>
+         <thead>
+          <tr>
+           <th>
+            СОТРУДНИК
+           </th>
+           <th>
+            UID КАРТЫ
+           </th>
+           <th>
+            ДОСТУП
+           </th>
+           <th>
+            ДОБАВЛЕН
+           </th>
+           <th>
+            ДЕЙСТВИЯ
+           </th>
+          </tr>
+         </thead>
+         <tbody id="users-body">
+         </tbody>
+        </table>
+       </div>
+       <div class="panel-note">
+        <svg>
+         <use href="#i-shield">
+         </use>
+        </svg>
+        Фото обрабатывается при регистрации. В базе сохраняется только вектор лица.
+       </div>
+      </article>
+     </section>
+     <section class="page" hidden="" id="page-terminal">
+      <div class="page-heading">
+       <div>
+        <div class="eyebrow">
+         ИНТЕГРАЦИЯ С УСТРОЙСТВОМ
+        </div>
+        <h1>
+         Проверка доступа
+         <span class="heading-dot">
+          .
+         </span>
+        </h1>
+        <p class="muted">
+         Проверьте карту и фото через тот же API, который использует ESP32.
+        </p>
+       </div>
+      </div>
+      <div class="terminal-grid">
+       <article class="panel terminal-panel">
+        <h2>
+         Тестовый проход
+        </h2>
+        <p class="muted">
+         Результат проверки появится в журнале событий.
+        </p>
+        <form id="access-form">
+         <label for="access-uid">
+          UID карты
+         </label>
+         <input autocomplete="off" class="uid-input" id="access-uid" maxlength="14" name="uid" pattern="[0-9A-F]{14}" placeholder="04A1B2C3D4E5F6" required=""/>
+         <label for="access-photo">
+          Фото с камеры · JPEG
+         </label>
+         <input accept="image/jpeg,.jpg,.jpeg" id="access-photo" name="photo" required="" type="file"/>
+         <button class="button primary" type="submit">
+          <svg>
+           <use href="#i-shield">
+           </use>
+          </svg>
+          Проверить доступ
+         </button>
+        </form>
+        <div aria-live="polite" class="access-result" hidden="" id="access-result">
+        </div>
+       </article>
+       <article class="panel connection-panel">
+        <span class="eyebrow">
+         API ДЛЯ ESP32-CAM
+        </span>
+        <h2>
+         Подключение устройства
+        </h2>
+        <p class="muted">
+         Устройство и сервер должны быть доступны в одной сети.
+        </p>
+        <div class="endpoint">
+         <span>
+          POST
+         </span>
+         <code>
+          /api/v1/access
+         </code>
+        </div>
+        <dl>
+         <dt>
+          Формат запроса
+         </dt>
+         <dd>
+          multipart/form-data
+         </dd>
+         <dt>
+          uid
+         </dt>
+         <dd>
+          14 символов · 0–9, A–F
+         </dd>
+         <dt>
+          photo
+         </dt>
+         <dd>
+          Файл JPEG · до 2 МБ
+         </dd>
+         <dt>
+          Ответ
+         </dt>
+         <dd>
+          HTTP 200 · JSON
+         </dd>
+        </dl>
+        <pre>{
+  "access": true,
+  "status": "success"
+}</pre>
+        <p class="connection-note" id="device-key-note">
+        </p>
+        <p class="muted small">
+         Укажите IP компьютера с сервером в прошивке. Для доступа по сети запустите сервер с APP_ADDR=0.0.0.0:8080.
+        </p>
+       </article>
+      </div>
+     </section>
+     <footer class="main-footer">
+      <span>
+       Контур · система контроля доступа
+      </span>
+      <span id="last-update">
+       Ожидание данных
+      </span>
+     </footer>
+    </main>
+   </div>
+  </div>
+  <dialog id="user-dialog">
+   <form id="user-form">
+    <div class="dialog-heading">
+     <div>
+      <span class="eyebrow">
+       НОВЫЙ ПРОФИЛЬ
+      </span>
+      <h2>
+       Добавить сотрудника
+      </h2>
+     </div>
+     <button aria-label="Закрыть" class="icon-button" data-close-dialog="" type="button">
+      <svg>
+       <use href="#i-close">
+       </use>
+      </svg>
+     </button>
+    </div>
+    <p class="muted">
+     Привяжите карту и эталонный портрет сотрудника.
+    </p>
+    <label for="full-name">
+     ФИО сотрудника
+    </label>
+    <input autocomplete="name" id="full-name" maxlength="120" minlength="2" name="full_name" placeholder="Иванов Иван Иванович" required=""/>
+    <label for="card-uid">
+     UID карты
+    </label>
+    <input autocomplete="off" class="uid-input" id="card-uid" maxlength="14" name="card_uid" pattern="[0-9A-F]{14}" placeholder="04A1B2C3D4E5F6" required=""/>
+    <p class="field-hint">
+     7 байт · 14 символов, без пробелов
+    </p>
+    <label class="upload-zone" for="user-photo">
+     <svg id="upload-icon">
+      <use href="#i-upload">
+      </use>
+     </svg>
+     <img alt="Выбранный портрет" hidden="" id="photo-preview"/>
+     <strong id="photo-label">
+      Выберите фотографию
+     </strong>
+     <span>
+      JPEG или PNG · до 2 МБ · одно лицо анфас
+     </span>
+     <input accept="image/jpeg,image/png,.jpg,.jpeg,.png" id="user-photo" name="photo" required="" type="file"/>
+    </label>
+    <p class="privacy-note">
+     <svg>
+      <use href="#i-shield">
+      </use>
+     </svg>
+     Фотография не сохраняется на сервере.
+    </p>
+    <p class="form-error" id="user-error" role="alert">
+    </p>
+    <div class="dialog-actions">
+     <button class="button secondary" data-close-dialog="" type="button">
+      Отмена
+     </button>
+     <button class="button primary" id="save-user" type="submit">
+      Сохранить сотрудника
+     </button>
+    </div>
+   </form>
+  </dialog>
+  <dialog id="confirm-dialog">
+   <div class="dialog-heading">
+    <h2>
+     Удалить сотрудника?
+    </h2>
+    <button aria-label="Закрыть" class="icon-button" id="cancel-delete-x">
+     <svg>
+      <use href="#i-close">
+      </use>
+     </svg>
+    </button>
+   </div>
+   <p class="muted" id="delete-description">
+   </p>
+   <p class="small muted">
+    Карта потеряет доступ. Записи в журнале сохранятся.
+   </p>
+   <div class="dialog-actions">
+    <button class="button secondary" id="cancel-delete">
+     Отмена
+    </button>
+    <button class="button danger" id="confirm-delete">
+     Удалить
+    </button>
+   </div>
+  </dialog>
+  <div class="toast" hidden="" id="toast" role="status">
+  </div>
+ </body>
+</html>

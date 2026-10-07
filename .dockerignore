@@ -1,0 +1,13 @@
+.venv
+.gocache
+.gomodcache
+.goenv
+.runtime
+data
+bin
+.env
+.git
+face-service/models
+**/__pycache__
+node_modules
+backups

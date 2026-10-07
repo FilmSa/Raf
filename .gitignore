@@ -1,0 +1,14 @@
+.venv/
+.gocache/
+.gomodcache/
+.goenv/
+data/
+face-service/models/*.onnx
+**/__pycache__/
+.env
+bin/
+.runtime/
+*.log
+node_modules/
+backups/
+backup.db
